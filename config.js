@@ -25,21 +25,21 @@ const readMore = more.repeat(4001)
 
 // Owner
 global.owner = [
-['18254873441'],
-['18254873441', 'Rijalganzz Owner', true],
+['183455837110471'],
+['183455837110471', 'Hiura', true],
 ]
 // cek lid mu pake .getlid
 global.ownerLid = [
-  ['18254873441', 'Rijalganzz Owner', true], // Owner via LID
+  ['183455837110471', 'Hiura', true], // Owner via LID
 ]
 
 // ingat ini id gc kosongan, untuk mengirim log error! 
-global.logerror = "120363418194471219@g.us"
+global.logerror = "_"
 
 global.mods = ['']
 global.prems = []
 // Info
-global.nomorwa = '18254873441'
+global.nomorwa = '183455837110471'
 global.packname = '© Furina-Md'
 global.author = 'Rijalganzz Owner'
 global.waktuSholat = {
@@ -51,7 +51,7 @@ global.waktuSholat = {
 }
 global.pairing = 'FURINAMD'
 global.namebot = 'Furina-Md'
-global.botNumber = '6283844926001'
+global.botNumber = '62882006639544'
 global.wm = '© Rijalganzz Owner'
 global.stickpack = '© Rijalganzz Owner 🌺'
 global.stickauth = 'Furina-Md'
