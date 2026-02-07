@@ -1,0 +1,65 @@
+[
+  {
+    "id": "120363029842756004@g.us",
+    "text": "GC 22 UNBAN SAVE",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760455402941,
+    "interval": 35,
+    "intervalType": "minute"
+  },
+  {
+    "id": "120363418248625885@g.us",
+    "text": "25 B6 UNBAN SAVE",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760455447940,
+    "interval": 35,
+    "intervalType": "minute"
+  },
+  {
+    "id": "120363143341366245@g.us",
+    "text": "23 NOPEM",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760453692801,
+    "interval": 45,
+    "intervalType": "minute"
+  },
+  {
+    "id": "6289659687613-1595456576@g.us",
+    "text": "20 UNBAN SAVE",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760455552943,
+    "interval": 35,
+    "intervalType": "minute"
+  },
+  {
+    "id": "120363022971817277@g.us",
+    "text": "TH22 GC",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760453797831,
+    "interval": 1,
+    "intervalType": "hour"
+  },
+  {
+    "id": "120363142623552567@g.us",
+    "text": "23 nopem UNBAN save",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760453887836,
+    "interval": 45,
+    "intervalType": "minute"
+  },
+  {
+    "id": "120363226157740972@g.us",
+    "text": "24 UNBAN save",
+    "time": null,
+    "enabled": true,
+    "lastSent": 1760453947831,
+    "interval": 45,
+    "intervalType": "minute"
+  }
+]

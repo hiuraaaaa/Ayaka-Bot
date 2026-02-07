@@ -1,0 +1,8 @@
+{
+  "pending": "📝 *TRANSAKSI PENDING*\n\n📅 {tanggal}\n⏰ {jam} WIB\n⚠️ Status: Pending\n\n⏳ Pesanan @{user} sedang diproses.",
+  "done": "✅ *TRANSAKSI SELESAI*\n\n📅 {tanggal}\n⏰ {jam} WIB\nStatus: Selesai\n\nTerima kasih @{user}, pesananmu telah selesai!",
+  "120363411417948866@g.us": {
+    "pending": "🕒 *TRANSAKSI PENDING*\n\n📅 @tanggal\n⏰ @jam WIB\n\nPesanan @user sedang *diproses*!",
+    "done": "✅ *TRANSAKSI SELESAI*\n\n📅 @tanggal\n⏰ @jam WIB\n\nPesanan @user telah *selesai*. Terima kasih!"
+  }
+}

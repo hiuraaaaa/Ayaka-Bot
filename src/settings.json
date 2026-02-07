@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "name": "sticker",
+      "items": [
+        {
+          "name": "sticker-dino",
+          "desc": "Auto-added by .spg",
+          "path": "sticker/sticker-dino?",
+          "status": "ready",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}

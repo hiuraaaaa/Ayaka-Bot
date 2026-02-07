@@ -1,0 +1,98 @@
+import fetch from 'node-fetch'
+import pkg from '@adiwajshing/baileys'
+const fkontak = {
+    key: { participant: '0@s.whatsapp.net', remoteJid: '0@s.whatsapp.net', fromMe: false, id: 'Halo' },
+    message: { conversation: `Kick Group Owner 🚪` }
+};
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+let handler = async (m, { conn, usedPrefix,command, text }) => {
+  try {
+
+    if (!text) {
+        return conn.reply(m.chat, `*❌ Perintah salah!*\n\n*📝 Contoh:*\n> ${usedPrefix + command} ${global.link.gc}\n> ${usedPrefix + command} 120363404563729037@g.us`, m, { quoted: fkontak });
+    }
+    
+    let link = text.trim();
+    let code = link.match(/chat\.whatsapp\.com\/([A-Za-z0-9_-]{22})/)?.[1];
+    let jid = link.match(/(\d{15,})@g\.us/i)?.[0];
+    let gid;
+    if (code) {
+        await conn.reply(m.chat, `🔄 Memproses...\n> Mencoba bergabung ke grup via link...`, m, { quoted: fkontak });
+        try {
+            gid = await conn.groupAcceptInvite(code);
+        } catch (e) {
+            console.error(e);
+            return conn.reply(m.chat, `❌ Gagal bergabung ke grup via link.\n\nMungkin link sudah kadaluwarsa, grup sudah penuh, atau saya sudah di-kick dari grup itu.`, m, { quoted: fkontak });
+        }
+        await conn.reply(m.chat, `*✅ Berhasil bergabung ke grup!*`, m, { quoted: fkontak });
+    } else if (jid) {
+        gid = jid;
+        await conn.reply(m.chat, `🔄 Memproses...\n> Menggunakan ID Grup: ${gid}\n> Memverifikasi keanggotaan bot...`, m, { quoted: fkontak });
+        try {
+            await conn.groupMetadata(gid);
+        } catch (e) {
+            console.error(e);
+            return conn.reply(m.chat, `❌ Gagal memverifikasi ID Grup.\n\nPastikan ID grup valid dan bot sudah ada di dalam grup tersebut.`, m, { quoted: fkontak });
+        }
+    } else {
+        return conn.reply(m.chat, '❌ Link grup atau ID Grup tidak valid.', m, { quoted: fkontak });
+    }
+
+    
+    let ownerNumbers = global.nomorown || [];
+    if (!Array.isArray(ownerNumbers)) {
+        ownerNumbers = [ownerNumbers];
+    }
+    let ownerJids = ownerNumbers
+        .map(num => num.replace(/[^0-9]/g, '') + '@s.whatsapp.net')
+        .filter(jid => jid.length > 10);
+
+    if (ownerJids.length === 0) {
+        return conn.reply(m.chat, '⚠️ Nomor owner (global.nomorown) belum diatur di *config.js*', m, { quoted: fkontak });
+    }
+
+    await conn.reply(m.chat, `*🆔 ID:* ${gid}\n> Sekarang mencoba mengeluarkan owner...`, m, { quoted: fkontak });
+    
+    let successJids = [];
+    let errorJids = [];
+    for (const jid of ownerJids) {
+        try {
+            await conn.groupParticipantsUpdate(gid, [jid], 'remove');
+            successJids.push(jid);
+            await delay(500);
+        } catch (e) {
+            console.error(`Gagal kick ${jid}:`, e);
+            errorJids.push({ jid, error: e.message || 'Error tidak diketahui' });
+        }
+    }
+    let resultText = '✨ *Hasil Operasi Kick Owner:*\n\n';
+    
+    if (successJids.length > 0) {
+        resultText += `✅ *Berhasil Dikeluarkan:*\n${successJids.map(jid => `@${jid.split('@')[0]}`).join('\n')}\n\n`;
+    }
+    
+    if (errorJids.length > 0) {
+        resultText += `❌ *Gagal Dikeluarkan:*\n`;
+        resultText += errorJids.map(e => `@${e.jid.split('@')[0]} (Error: ${e.error})`).join('\n') + '\n\n';
+        resultText += `\n*Penyebab Umum:*\n1. Saya bukan admin di grup tersebut.\n2. Owner tidak ada di dalam grup.\n3. Owner adalah pembuat grup (creator).`;
+    }
+
+    await conn.reply(m.chat, resultText.trim(), m, {
+        quoted: fkontak,
+        mentions: [...successJids, ...errorJids.map(e => e.jid)]
+    });
+
+  } catch (e) {
+    console.error('[KICK2 ERROR]', e);
+    await conn.reply(m.chat, `❌ Gagal total!\n\n${e.message}`, m, { quoted: fkontak });
+  }
+}
+
+handler.help = ['kickme <linkgrup/idgrup>']
+handler.tags = ['owner']
+handler.command = /^(kickme)$/i
+handler.owner = true
+
+export default handler

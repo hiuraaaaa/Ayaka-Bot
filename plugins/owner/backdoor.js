@@ -1,0 +1,15 @@
+let handler = async (m, { conn }) => {
+    let user = global.db.data.users[m.sender]
+        conn.reply(m.chat, `*Succes Backdoor☠️ !*`, m)
+        global.db.data.users[m.sender].money = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+        global.db.data.users[m.sender].cash = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+        global.db.data.users[m.sender].limit = 999999999999999999999999999999999999
+        global.db.data.users[m.sender].exp = 999999999999
+await m.reply('Sekarang aku dan kamu saja admin.') 
+}
+handler.tag = ['owner']
+handler.command = /^(backdoor)$/i
+handler.owner = true
+handler.mods = false
+
+export default handler;

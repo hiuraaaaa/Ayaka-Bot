@@ -1,0 +1,20 @@
+{
+  "120363368893797026@g.us": {
+    "button": true,
+    "mode": "text"
+  },
+  "120363377551199854@g.us": {
+    "button": false,
+    "mode": "button"
+  },
+  "120363387553907048@g.us": {
+    "button": false,
+    "mode": "text"
+  },
+  "120363322679171544@g.us": {
+    "mode": "text"
+  },
+  "120363164262813528@g.us": {
+    "mode": "button"
+  }
+}

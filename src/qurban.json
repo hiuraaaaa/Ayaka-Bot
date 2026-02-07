@@ -1,0 +1,334 @@
+{
+  "users": {
+    "16802909855@s.whatsapp.net": {
+      "kambing": 0,
+      "sapi": 0,
+      "poin": 417,
+      "uang": 25000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 1,
+        "bantu": 1,
+        "bagi": 1,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1749169892188,
+        "ceritaqurban": 1749169959868,
+        "bantuwarga": 1749169993418,
+        "berbagiqurban": 1749170022143
+      },
+      "name": "Apa itu jawa script?"
+    },
+    "6285234208584@s.whatsapp.net": {
+      "kambing": 0,
+      "sapi": 1,
+      "poin": 14520,
+      "uang": 55000,
+      "sertifikat": 2,
+      "tugas": {
+        "klaim": 2,
+        "bantu": 61,
+        "bagi": 1,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1749172659730,
+        "bantuwarga": 1750159646352,
+        "berbagiqurban": 1749170600690,
+        "ceritaqurban": 1752234922262,
+        "upgrade": 1749592957170,
+        "klaimhadiah": 1749196402711
+      },
+      "name": "cuki ruok?"
+    },
+    "6285700226924@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 0,
+      "uang": 0,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 0,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {},
+      "name": "."
+    },
+    "6285824498694@s.whatsapp.net": {
+      "kambing": 0,
+      "sapi": 0,
+      "poin": 1126,
+      "uang": 10000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 2,
+        "bantu": 2,
+        "bagi": 1,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1749172714798,
+        "ceritaqurban": 1749177294580,
+        "bantuwarga": 1749172730118,
+        "berbagiqurban": 1749171340327,
+        "upgrade": 1749172782771
+      },
+      "name": "Al"
+    },
+    "6281455120635@s.whatsapp.net": {
+      "kambing": 0,
+      "sapi": 1,
+      "poin": 13253,
+      "uang": 70000,
+      "sertifikat": 2,
+      "tugas": {
+        "klaim": 2,
+        "bantu": 56,
+        "bagi": 1,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1749173802880,
+        "bantuwarga": 1750744020517,
+        "berbagiqurban": 1749172466539,
+        "ceritaqurban": 1750744022832,
+        "upgrade": 1750744028760,
+        "klaimhadiah": 1749215400084
+      },
+      "name": ">\\\\<"
+    },
+    "6287869936384@s.whatsapp.net": {
+      "kambing": 0,
+      "sapi": 0,
+      "poin": 800,
+      "uang": 75000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 2,
+        "bantu": 11,
+        "bagi": 1,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1749194998267,
+        "bantuwarga": 1749394370952,
+        "berbagiqurban": 1749195047280
+      },
+      "name": "renn imuppp"
+    },
+    "6285888620679@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 100,
+      "uang": 10000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 0,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "ceritaqurban": 1749173875433
+      },
+      "name": "Kenzo"
+    },
+    "6289626392549@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 0,
+      "uang": 0,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 0,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {},
+      "name": " "
+    },
+    "6282231213583@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 30,
+      "uang": 5000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 1,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1749461069628
+      },
+      "name": "fufufaraa"
+    },
+    "6281368144282@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 420,
+      "uang": 50000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 4,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1749479841349,
+        "ceritaqurban": 1749473230555
+      },
+      "name": "unknown"
+    },
+    "628388318450@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 30,
+      "uang": 5000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 1,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1757828371623
+      },
+      "name": "𝐧𝐮𝐮𝐮✮"
+    },
+    "6282211823661@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 30,
+      "uang": 5000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 1,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1763534465108
+      },
+      "name": "Rizal"
+    },
+    "6283849773360@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 100,
+      "uang": 10000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 0,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "ceritaqurban": 1763908018931
+      },
+      "name": "zi?"
+    },
+    "6281377897557@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 30,
+      "uang": 5000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 1,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1764480966091
+      },
+      "name": "Aryx"
+    },
+    "601126743008@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 1560,
+      "uang": 180000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 12,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1764963825773,
+        "ceritaqurban": 1764963835070
+      },
+      "name": "𝓡 ᥫ᭡"
+    },
+    "6285212224587@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 417,
+      "uang": 30000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 2,
+        "bantu": 2,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "klaimharian": 1764647179540,
+        "bantuwarga": 1764647183425
+      },
+      "name": "♡"
+    },
+    "6282381051887@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 300,
+      "uang": 50000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 10,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "bantuwarga": 1764943523515
+      },
+      "name": "•ainzZzz★♪ | sT🅰️R⭐"
+    },
+    "6288980600476@s.whatsapp.net": {
+      "kambing": 1,
+      "sapi": 0,
+      "poin": 290,
+      "uang": 35000,
+      "sertifikat": 0,
+      "tugas": {
+        "klaim": 0,
+        "bantu": 3,
+        "bagi": 0,
+        "selesai": false
+      },
+      "cooldowns": {
+        "ceritaqurban": 1764956801221,
+        "bantuwarga": 1764956813185
+      },
+      "name": "rmaa"
+    }
+  },
+  "lastWeeklyReminder": "",
+  "claimedPrize": {
+    "6285234208584@s.whatsapp.net": true,
+    "6281455120635@s.whatsapp.net": true
+  }
+}
