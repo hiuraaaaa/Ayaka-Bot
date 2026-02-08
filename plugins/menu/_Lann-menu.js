@@ -8,28 +8,30 @@ const { generateWAMessageFromContent, proto } = (await import('@adiwajshing/bail
 const defaultMenu = {
   before: `\`Hai Kak👋🏻, %ucpn\`
 
-◤───「 \`INFO\` 」──✦
-> ֎〔 *Nama Bot:* %me
-> ֎〔 *Nama:* %name
-> ֎〔 *Status:* %prems
-> ֎〔 *Limit:* %limit Ⓛ
-◣─────────────✦
+**INFO BOT**
+╭ ⌯ Nama Bot: %me
+│ ⌯ Ping: ${performance.now().toFixed(4)}ms
+╰ ⌯ Nomor Bot: ${global.botNumber}
 
-◤───「 \`OWNER\` 」──✦
-> ֎〔 *Owner:* Rijalganzz Owner
-◣─────────────✦
+**INFO USER**
+╭ ⌯ Nama: %name
+│ ⌯ Status: %prems
+╰ ⌯ Limit: %limit Ⓛ
+
+**INFO OWNER**
+╭ ⌯ Owner: ${global.author}
+│ ⌯ Contact: ${global.nomorwa}
+╰ ⌯ Website: ${global.myweb}
 
 _*Date:*_ %date %weton
 _*Time:*_ %time
-
-*_Hai, Saya ${global.namebot}, yang di dirikan oleh Rijalganzz Owner, untuk membantu kesibukan dan kebutuhan anda_*🍂
 %readmore
 `.trimStart(),
 
-  header: '◈───≼ _*%category*_ ≽──⊚',
-  body: '┝⎆ [ _%cmd_ %islimit %isPremium',
-  footer: '◈┄──━━┉─࿂',
-  after: `© Rijalganzz Owner`
+  header: '╭──⌯ _*%category*_ ⌯──╮',
+  body: '│ ⌯ %cmd %islimit %isPremium',
+  footer: '╰────────⌯',
+  after: ``
 }
 
 let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
@@ -176,29 +178,43 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args, command }) => {
       (_, name) => '' + replace[name]
     )
 
-    await conn.sendMessage(m.chat, {
-      text,
-      contextInfo: {
-        externalAdReply: {
-          title: global.namebot,
-          body: global.author,
-          thumbnailUrl: global.tfitur,
-          sourceUrl: global.myweb,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-        }
-      }
-    }, { quoted: flok })
+    let fkon = {
+      key: {
+        fromMe: false,
+        participant: `${m.sender.split('@')[0]}@s.whatsapp.net`,
+        ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}),
+      },
+      message: {
+        contactMessage: {
+          displayName: `${name}`,
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+        },
+      },
+    }
 
-    await conn.sendFile(
-      m.chat,
-      "https://c.termai.cc/a45/6PnA.opus",
-      "menu.mp3",
-      null,
-      flok,
-      true,
-      { type: "audioMessage", ptt: true }
-    )
+    await conn.sendMessage(m.chat, {
+      image: { url: global.tfitur },
+      caption: text,
+      footer: `© ${global.namebot || 'Bot'} || ${global.author || 'Author'}`,
+      buttons: [
+        {
+          buttonId: '.owner',
+          buttonText: { displayText: '☎ Owner' },
+          type: 1,
+        }
+      ],
+      headerType: 1,
+      viewOnce: true
+    }, { quoted: fkon })
+
+    // Audio menu - uncomment jika ingin aktifkan
+    /*
+    await conn.sendMessage(m.chat, {
+      audio: { url: 'https://c.termai.cc/a45/6PnA.opus' },
+      mimetype: 'audio/mpeg',
+      ptt: true
+    }, { quoted: fkon })
+    */
 
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error.', m)
