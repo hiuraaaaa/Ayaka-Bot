@@ -30,11 +30,11 @@ global.owner = [
 ]
 // cek lid mu pake .getlid
 global.ownerLid = [
-  ['183455837110471', 'Hiura', true], // Owner via LID
+  ['216437025165553', 'Hiura', true], // Owner via LID
 ]
 
 // ingat ini id gc kosongan, untuk mengirim log error! 
-global.logerror = "_"
+global.logerror = "120363407099549098@g.us"
 
 global.mods = ['']
 global.prems = []
