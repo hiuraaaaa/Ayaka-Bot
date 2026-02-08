@@ -23,27 +23,37 @@ const defaultMenu = {
   after: '',
 };
 
-let Lanndev = `- *Haloo Pengguna FURINA MD👋🏻*
+let Lanndev = async (conn, m) => {
+  let name = await conn.getName(m.sender);
+  let premium = global.db.data.users[m.sender].premiumTime;
+  let prems = `${premium > 0 ? 'Premium' : 'Free'}`;
+  let _uptime = process.uptime() * 1000;
+  let uptime = clockString(_uptime);
+  
+  // Hitung ping
+  let timestamp = performance.now();
+  let latensi = performance.now() - timestamp;
+  let ping = latensi.toFixed(4);
 
-🌌 ━━━ \`STATISTIC\` ━━━ 🌌
+  return `👋 Halo! Selamat datang di Lumina Md
 
-- *PING* - 
-> Dalam dunia yang penuh teka-teki, bot ini hadir sebagai perpanjangan tangan kehendakmu. Apapun yang kau butuhkan, perintah ada di ujung jari. Rasakan kekuatan dan kendalikan seluruh fitur yang tersedia dengan satu komando. Ketik perintah di bawah untuk menunjukkan kekuasaanmu!
+*INFO BOT*
+╭ ⌯ Status: Online
+│ ⌯ Bot: ${global.namebot}
+│ ⌯ Packname: ${global.packname}
+│ ⌯ Ping: ${ping}ms
+╰ ⌯ Nomor Bot: ${global.botNumber}
 
-🎛️ ━━━ \`COMMANDS\` ━━━ 🎛️
+*INFO USER*
+╭ ⌯ Nama: ${name}
+│ ⌯ Nomor: ${m.sender.split('@')[0]}
+╰ ⌯ Status: ${prems}
 
-📝 !daftar - Daftar Ke DB
-📋 !allmenu - Semua perintah
-📜 !listmenu - List menu
-📖 !tutorial - Panduan user
-👤 !owner - Info pemilik bot
-🏷️ !script - Info sc Ayaka
-
-🔗 ━━ \`INFO PEMILIK\` ━━ 🔗
-
-📜 Name: Rijalganzz Owner
-📸 Github: https://github.com/RIJALGANZZZ
-🖥️ WhatsApp: 18254873441`;
+*INFO OWNER*
+╭ ⌯ Owner: ${global.author}
+│ ⌯ Contact: ${global.nomorwa}
+╰ ⌯ Website: ${global.myweb}`;
+};
 
 let handler = async (m, { conn }) => {
   
@@ -267,11 +277,14 @@ let handler = async (m, { conn }) => {
       },
     };
 
+    // Generate menu text
+    let menuText = await Lanndev(conn, m);
+
     if (menuSettings.button) {
       try {
         await conn.sendMessage(m.chat, {
           image: { url: global.thumbmenu },
-          caption: Lanndev,
+          caption: menuText,
           footer: `© ${global.namebot || 'Bot'} || ${global.author || 'Author'}`,
           buttons: [
             {
@@ -294,33 +307,33 @@ let handler = async (m, { conn }) => {
                   title: 'Menu 📊',
                   sections: [
                     {
-                      title: 'Ayaka Kimisato 🌺',
-                      highlight_label: 'Populer🔎',
+                      title: 'Lumina Md✨',
+                      highlight_label: 'Populer',
                       rows: [
-                        { header: '📜 Menu All', title: 'All Menu 📜', description: '✨ Menampilkan Semua Menu 📖', id: '.allmenu' },
-  { header: '📂 Menu List', title: 'List Menu 📂', description: '🗂️ Menampilkan Menu Simpel ✅', id: '.listmenu' },
-  { header: '🤖 Menu AI', title: 'Ai Menu 🤖', description: '⚡ Menampilkan Menu AI 🧠', id: '.menuai' },
-  { header: '🌸 Menu Anime', title: 'Anime Menu 🌸', description: '🎌 Menampilkan Menu Anime 🎥', id: '.menuanime' },
-  { header: '🎵 Menu Audio', title: 'Audio Menu 🎵', description: '🎧 Menampilkan Menu Audio 🔊', id: '.menuaudio' },
-  { header: '📖 Menu Ceramah', title: 'Ceramah Menu 📖', description: '🕌 Menampilkan Menu Ceramah 📿', id: '.menuceramah' },
-  { header: '🎬 Menu Asupan', title: 'Asupan Menu 🎬', description: '🍿 Menampilkan Menu Asupan 🎞️', id: '.menuasupan' },
-  { header: '⬇️ Menu Download', title: 'Download Menu ⬇️', description: '📥 Menampilkan Menu Download 💾', id: '.menudownloader' },
-  { header: '😂 Menu Fun', title: 'Fun Menu 😂', description: '🎉 Menampilkan Menu Fun 🤣', id: '.menufun' },
-  { header: '🎮 Menu Game', title: 'Game Menu 🎮', description: '🕹️ Menampilkan Menu Game 👾', id: '.menugame' },
-  { header: '👥 Menu Group', title: 'Group Menu 👥', description: '💬 Menampilkan Menu Group 👥', id: '.menugc' },
-  { header: 'ℹ️ Menu Info', title: 'Info Menu ℹ️', description: '📑 Menampilkan Menu Info 📊', id: '.menuinfo' },
-  { header: '🌐 Menu Internet', title: 'Internet Menu 🌐', description: '🌍 Menampilkan Menu Internet 📡', id: '.menuinternet' },
-  { header: '🏠 Menu Main', title: 'Main Menu 🏠', description: '🎯 Menampilkan Menu Main 🏡', id: '.menumain' },
-  { header: '🎨 Menu Maker', title: 'Maker Menu 🎨', description: '🖌️ Menampilkan Menu Maker 🏗️', id: '.menumaker' },
-  { header: '🥳 Menu HaveFun', title: 'HaveFun Menu 🥳', description: '🎊 Menampilkan Menu HaveFun 🎲', id: '.menuhavefun' },
-  { header: '👑 Menu Owner', title: 'Owner Menu 👑', description: '⚔️ Menampilkan Menu Owner 👤', id: '.menuowner' },
-  { header: '💎 Menu Premium', title: 'Premium Menu 💎', description: '⭐ Menampilkan Menu Premium 🏆', id: '.menupremium' },
-  { header: '🔍 Menu Search', title: 'Search Menu 🔍', description: '🔎 Menampilkan Menu Random 🎯', id: '.menusearch' },
-  { header: '⚔️ Menu RPG', title: 'RPG Menu ⚔️', description: '🛡️ Menampilkan Menu RPG 🐉', id: '.menurpg' },
-  { header: '🎭 Menu Sticker', title: 'Sticker Menu 🎭', description: '✨ Menampilkan Menu Sticker 🖼️', id: '.menustiker' },
-  { header: '🛠️ Menu Tools', title: 'Tools Menu 🛠️', description: '🔧 Menampilkan Menu Tools ⚙️', id: '.menutools' },
-  { header: '📊 Menu Panel', title: 'Panel Menu 📊', description: '📋 Menampilkan Menu Panel 🖥️', id: '.menupanel' },
-  { header: '💬 Menu Quotes', title: 'Quotes Menu 💬', description: '📝 Menampilkan Menu Quotes 💡', id: '.menuquotes' },
+                        { header: '📜 Menu All', title: 'All Menu', description: 'Menampilkan Semua Menu', id: '.allmenu' },
+                        { header: '📂 Menu List', title: 'List Menu', description: 'Menampilkan Menu Simpel', id: '.listmenu' },
+                        { header: '🤖 Menu AI', title: 'Ai Menu', description: 'Menampilkan Menu AI', id: '.menuai' },
+                        { header: '🌸 Menu Anime', title: 'Anime Menu', description: 'Menampilkan Menu Anime', id: '.menuanime' },
+                        { header: '🎵 Menu Audio', title: 'Audio Menu', description: 'Menampilkan Menu Audio', id: '.menuaudio' },
+                        { header: '📖 Menu Ceramah', title: 'Ceramah Menu', description: 'Menampilkan Menu Ceramah', id: '.menuceramah' },
+                        { header: '🎬 Menu Asupan', title: 'Asupan Menu', description: 'Menampilkan Menu Asupan', id: '.menuasupan' },
+                        { header: '⬇️ Menu Download', title: 'Download Menu', description: 'Menampilkan Menu Download', id: '.menudownloader' },
+                        { header: '😂 Menu Fun', title: 'Fun Menu', description: 'Menampilkan Menu Fun', id: '.menufun' },
+                        { header: '🎮 Menu Game', title: 'Game Menu', description: 'Menampilkan Menu Game', id: '.menugame' },
+                        { header: '👥 Menu Group', title: 'Group Menu', description: 'Menampilkan Menu Group', id: '.menugc' },
+                        { header: 'ℹ️ Menu Info', title: 'Info Menu', description: 'Menampilkan Menu Info', id: '.menuinfo' },
+                        { header: '🌐 Menu Internet', title: 'Internet Menu', description: 'Menampilkan Menu Internet', id: '.menuinternet' },
+                        { header: '🏠 Menu Main', title: 'Main Menu', description: 'Menampilkan Menu Main', id: '.menumain' },
+                        { header: '🎨 Menu Maker', title: 'Maker Menu', description: 'Menampilkan Menu Maker', id: '.menumaker' },
+                        { header: '🥳 Menu HaveFun', title: 'HaveFun Menu', description: 'Menampilkan Menu HaveFun', id: '.menuhavefun' },
+                        { header: '👑 Menu Owner', title: 'Owner Menu', description: 'Menampilkan Menu Owner', id: '.menuowner' },
+                        { header: '💎 Menu Premium', title: 'Premium Menu', description: 'Menampilkan Menu Premium', id: '.menupremium' },
+                        { header: '🔍 Menu Search', title: 'Search Menu', description: 'Menampilkan Menu Search', id: '.menusearch' },
+                        { header: '⚔️ Menu RPG', title: 'RPG Menu', description: 'Menampilkan Menu RPG', id: '.menurpg' },
+                        { header: '🎭 Menu Sticker', title: 'Sticker Menu', description: 'Menampilkan Menu Sticker', id: '.menustiker' },
+                        { header: '🛠️ Menu Tools', title: 'Tools Menu', description: 'Menampilkan Menu Tools', id: '.menutools' },
+                        { header: '📊 Menu Panel', title: 'Panel Menu', description: 'Menampilkan Menu Panel', id: '.menupanel' },
+                        { header: '💬 Menu Quotes', title: 'Quotes Menu', description: 'Menampilkan Menu Quotes', id: '.menuquotes' },
                       ],
                     },
                   ],
@@ -346,7 +359,7 @@ let handler = async (m, { conn }) => {
       try {
         await conn.sendMessage(m.chat, {
           image: { url: global.thumbmenu },
-          caption: Lanndev,
+          caption: menuText,
         }, { quoted: flok });
         
   await conn.sendMessage(m.chat, {
