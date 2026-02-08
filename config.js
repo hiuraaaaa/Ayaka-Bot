@@ -40,8 +40,8 @@ global.mods = ['']
 global.prems = []
 // Info
 global.nomorwa = '183455837110471'
-global.packname = '© Furina-Md'
-global.author = 'Rijalganzz Owner'
+global.packname = '© Lumina-Md'
+global.author = 'Hiura'
 global.waktuSholat = {
      subuh: '04:39',
      dhuhur: '11:54',
@@ -49,12 +49,12 @@ global.waktuSholat = {
      maghrib: '17:53',
      isya: '19:23',
 }
-global.pairing = 'FURINAMD'
-global.namebot = 'Furina-Md'
+global.pairing = 'LUMINAMD'
+global.namebot = 'Lumina-Md'
 global.botNumber = '62882006639544'
-global.wm = '© Rijalganzz Owner'
-global.stickpack = '© Rijalganzz Owner 🌺'
-global.stickauth = 'Furina-Md'
+global.wm = '© Hiura'
+global.stickpack = '© Hiura 🥪'
+global.stickauth = 'Lumina-Md'
 global.fotonya = 'https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg'
 global.fotonya2 = `https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg`
 global.thumbmenu = 'https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg'
@@ -63,9 +63,9 @@ global.premv2 = 'https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads
 global.yae22 = 'https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg'
 // Link Sosmed
 global.sesiId = '19RUq6mJA4En2cfdPXjnl8t4YBSSCIWCiQK4YMsnrIg'
-global.sig = 'https://github.com/RIJALGANZZZ'
+global.sig = 'https://github.com/hiuraaaaa'
 global.syt = 'Ga Punya Yete'
-global.sgh = 'https://github.com/RIJALGANZZZ'
+global.sgh = 'https://github.com/hiuraaaaa'
 global.sgc = 'rijalganzz.web.id'
 global.myweb = 'rijalganzz.web.id'
 global.nisajpg = 'https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg'
@@ -104,7 +104,7 @@ global.flok = {
                         },
        "message": {
                     "locationMessage": {
-                    "name": `Furina-Md ✨`,
+                    "name": `Lumina-Md ✨`,
                     "jpegThumbnail": ''
                           }
                         }
