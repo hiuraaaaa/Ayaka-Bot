@@ -7,7 +7,7 @@ import PhoneNumber from 'awesome-phonenumber'
 import path, { join, dirname, resolve } from 'path'
 import { platform } from 'process'
 import { fileURLToPath, pathToFileURL } from 'url'
-import { createRequire } from 'module' // Bring in the ability to create the 'require' method
+import { createRequire } from 'module'
 global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') { return rmPrefix ? /^file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString() }; global.__dirname = function dirname(pathURL) { return path.dirname(global.__filename(pathURL, true)) }; global.__require = function require(dir = import.meta.url) { return createRequire(dir) }
 import {
     readdirSync,
@@ -56,17 +56,14 @@ protoType()
 serialize()
 
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
-// global.Fn = function functionCallBack(fn, ...args) { return fn.call(global.conn, ...args) }
 global.timestamp = {
   start: new Date
 }
-
 
 const __dirname = global.__dirname(import.meta.url)
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 global.prefix = new RegExp('^[' + (opts['prefix'] || 'cCrR‎xzXZ/!#$V%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^V$+*?.\-\^]/g, '\\$&') + ']')
-//global.prefix = new RegExp('^[' + (opts['prefix'] || 'cCrR‎xzXZ/!#$V%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^V$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -74,7 +71,7 @@ global.db = new Low(
       (opts['mongodbv2'] ? new mongoDBV2(opts['db']) : new mongoDB(opts['db'])) :
       new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 )
-global.DATABASE = global.db // Backwards Compatibility
+global.DATABASE = global.db
 global.loadDatabase = async function loadDatabase() {
     if (db.READ) return new Promise((resolve) => setInterval(async function () {
         if (!db.READ) {
@@ -98,15 +95,16 @@ global.loadDatabase = async function loadDatabase() {
     global.db.chain = chain(db.data)
 }
 loadDatabase()
+
 const useStore = !process.argv.includes('--use-store')
 const usePairingCode = !process.argv.includes('--use-pairing-code')
 const useMobile = process.argv.includes('--mobile')
 
 var question = function(text) {
-            return new Promise(function(resolve) {
-                rl.question(text, resolve);
-            });
-        };
+    return new Promise(function(resolve) {
+        rl.question(text, resolve);
+    });
+};
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 
 const { version, isLatest} = await fetchLatestBaileysVersion()
@@ -115,7 +113,7 @@ const connectionOptions = {
     version,
     logger: pino({ level: 'silent' }), 
     printQRInTerminal: !usePairingCode, 
-    browser: ["Mac OS", "Safari", "17.0"], // Pake Safari di Mac OS, cakep nih!
+    browser: ["Mac OS", "Safari", "17.0"],
     auth: { 
         creds: state.creds, 
         keys: makeCacheableSignalKeyStore(state.keys, pino().child({ 
@@ -156,12 +154,10 @@ global.conn = makeWASocket({
     ...connectionOptions
 })
 
-// --- FIX PESAN MENUNGGU DEKRIPSI (VERSI STABIL) ---
 conn.ev.on('connection.update', async ({ connection, receivedPendingNotifications }) => {
     if (connection === 'open') {
         console.log(chalk.greenBright('✅ Bot tersambung, memastikan key enkripsi aktif...'))
         try {
-            // Pastikan semua key tersinkron
             if (conn?.authState?.creds?.noiseKey) {
                 console.log(chalk.blueBright('🔑 Key enkripsi sudah aktif & siap digunakan.'))
             } else {
@@ -176,7 +172,6 @@ conn.ev.on('connection.update', async ({ connection, receivedPendingNotification
         console.log(chalk.yellow('📩 Menunggu pesan baru dari server...'))
     }
 })
-// --- END FIX ---
 
 conn.isInit = false
 
@@ -241,7 +236,7 @@ function clearTmp() {
   tmp.forEach(dirname => readdirSync(dirname).forEach(file => filename.push(join(dirname, file))))
   return filename.map(file => {
     const stats = statSync(file)
-    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) return unlinkSync(file) // 3 minutes
+    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) return unlinkSync(file)
     return false
   })
 }
@@ -251,7 +246,7 @@ function clearSessions(folder = 'sessions') {
 	readdirSync(folder).forEach(file => filename.push(join(folder, file)))
 	return filename.map(file => {
 		let stats = statSync(file)
-		if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 120)) { // 1 hours
+		if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 120)) {
 			console.log('Deleted sessions', file)
 			return unlinkSync(file)
 		}
@@ -276,19 +271,12 @@ async function connectionUpdate(update) {
 }
 
 process.on('uncaughtException', console.error)
-// let strQuot = /(["'])(?:(?=(\\?))\2.)*?\1/
 
 let isInit = true
 let handler = await import('./handler.js')
 global.reloadHandler = async function (restatConn) {
-    /*try {
-        const Handler = await import(`./handler.js?update=${Date.now()}`).catch(console.error)*/
     try {
-	// Jika anda menggunakan replit, gunakan yang sevenHoursLater dan tambahkan // pada const Handler
-	// Default: server/vps/panel, replit + 7 jam buat jam indonesia
-        // const sevenHoursLater = Date.now() + 7 * 60 * 60 * 1000;
         const Handler = await import(`./handler.js?update=${Date.now()}`).catch(console.error)
-      // const Handler = await import(`./handler.js?update=${sevenHoursLater}`).catch(console.error)
         if (Object.keys(Handler || {}).length) handler = Handler
     } catch (e) {
         console.error(e)
@@ -337,16 +325,19 @@ global.reloadHandler = async function (restatConn) {
   conn.ev.on('creds.update', conn.credsUpdate)
   isInit = false
   return true
-
 }
 
 const rootDir = __dirname
 const pluginFolder = join(rootDir, "plugins")
 global.plugins = {}
 
-  function colorText(text, colorCode) {
+function colorText(text, colorCode) {
   return `\x1b[${colorCode}m${text}\x1b[0m`;
 }
+
+// ========================================
+// 🔒 IP WHITELIST SYSTEM (VERCEL + SUPABASE)
+// ========================================
 
 async function getLocalIp() {
   try {
@@ -363,14 +354,14 @@ async function getLocalIp() {
 
 async function checkIpWhitelist(ipAddress) {
   try {
-    const response = await fetch(
-      "https://staging-whatsapp-bot-whitelist-management-odv2.encr.app/ips/check",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ipAddress })
-      }
-    );
+    // 🌐 Ganti dengan URL Vercel kamu
+    const WHITELIST_SERVER = "https://whitelist-ip.vercel.app";
+    
+    const response = await fetch(`${WHITELIST_SERVER}/ips/check`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ipAddress })
+    });
 
     if (!response.ok) return { allowed: false };
 
@@ -382,11 +373,15 @@ async function checkIpWhitelist(ipAddress) {
       err.message
     );
     console.error(
-      colorText("[ ! ] Pastikan server whitelist berjalan dengan benar.", "31")
+      colorText("[ ! ] Pastikan server whitelist berjalan: https://whitelist-ip.vercel.app", "31")
     );
     return { allowed: false };
   }
 }
+
+// ========================================
+// END IP WHITELIST SYSTEM
+// ========================================
 
 function ensureRootSymlinks(selectedFolders = ["lib", "src", "json", "tmp", "sessions"]) {
 
@@ -394,7 +389,6 @@ function ensureRootSymlinks(selectedFolders = ["lib", "src", "json", "tmp", "ses
 
   console.log(chalk.cyanBright(`\n🔄 Membuat ulang symlink hanya untuk folder: ${selectedFolders.join(", ")}`))
 
-  // hapus semua symlink lama di folder plugins
   const oldEntries = fs.readdirSync(pluginFolder)
   for (const entry of oldEntries) {
     const fullPath = join(pluginFolder, entry)
@@ -530,26 +524,39 @@ fs.watch(pluginFolder, { recursive: true }, async (event, filename) => {
   await global.reloadHandler?.(false)
 })
 
-// --- 5. Eksekusi utama ---
+// ========================================
+// 🚀 MAIN EXECUTION WITH IP WHITELIST CHECK
+// ========================================
 ;(async () => {
   console.log(chalk.cyanBright("🌐 Checking your IP and plugins access..."))
+  
   const ip = await getLocalIp()
-  if (!ip) return console.error(colorText("\n[ ! ] Tidak dapat melanjutkan tanpa IP publik.", "31"))
-
-  const result = await checkIpWhitelist(ip)
-  if (!result.allowed) {
-    console.log(colorText(`\n🚫 Akses Plugins ditolak! IP ${ip} tidak terdaftar.`, "31"))
+  if (!ip) {
+    console.error(colorText("\n[ ! ] Tidak dapat melanjutkan tanpa IP publik.", "31"))
     process.exit(1)
   }
 
-  console.log(chalk.greenBright(`✅ Akses Plugins Disetujui Sensei >.<`))
+  console.log(chalk.blueBright(`📍 Your public IP: ${ip}`))
+
+  const result = await checkIpWhitelist(ip)
+  
+  if (!result.allowed) {
+    console.log(colorText(`\n🚫 Akses Plugins ditolak! IP ${ip} tidak terdaftar.`, "31"))
+    console.log(colorText(`\n💡 Tambahkan IP kamu di dashboard: https://whitelist-ip.vercel.app`, "33"))
+    process.exit(1)
+  }
+
+  console.log(chalk.greenBright(`✅ Akses Plugins Disetujui! Welcome Sensei >.<`))
+  if (result.reason === 'allow_all_enabled') {
+    console.log(chalk.yellow(`⚠️  Mode: Allow All IPs enabled`))
+  }
 
   ensureRootSymlinks()
   await loadPlugins(true, false)
   await global.reloadHandler?.()
 })()
-// Quick Test
 
+// Quick Test
 async function _quickTest() {
     let test = await Promise.all([
         spawn('ffmpeg'),
@@ -582,22 +589,9 @@ async function _quickTest() {
         gm,
         find
     }
-    // require('./lib/sticker').support = s
     Object.freeze(global.support)
-
-    //if (!s.ffmpeg) {
-        //conn.logger.warn(`Silahkan install ffmpeg terlebih dahulu agar bisa mengirim video`)
-    //}
-
-    //if (s.ffmpeg && !s.ffmpegWebp) {
-        //conn.logger.warn('Sticker Mungkin Tidak Beranimasi tanpa libwebp di ffmpeg (--enable-ibwebp while compiling ffmpeg)')
-    //}
-
-    //if (!s.convert && !s.magick && !s.gm) {
-        //conn.logger.warn('Fitur Stiker Mungkin Tidak Bekerja Tanpa imagemagick dan libwebp di ffmpeg belum terinstall (pkg install imagemagick)')
-    //}
-
 }
+
 _quickTest()
     .then(() => conn.logger.info('☑️ Quick Test Done , nama file session ~> creds.json'))
     .catch(console.error)
@@ -612,8 +606,6 @@ conn.ev.on('group-participants.update', async (event) => {
     groupCache.set(event.id, metadata)
 })
 
-
-
 groupCache.on("del", (key, value) => {
     console.log(`Cache untuk ${key} dihapus.`);
 });
@@ -621,8 +613,6 @@ groupCache.on("del", (key, value) => {
 groupCache.on("expired", (key, value) => {
     console.log(`Cache untuk ${key} kadaluarsa.`);
 });
-
-
 
 setInterval(() => {
     console.log("Pengecekan otomatis cache grup:");
