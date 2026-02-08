@@ -25,8 +25,8 @@ const readMore = more.repeat(4001)
 
 // Owner
 global.owner = [
-['183455837110471'],
-['183455837110471', 'Hiura', true],
+['6283821920285'],
+['6283821920285', 'Hiura', true],
 ]
 // cek lid mu pake .getlid
 global.ownerLid = [
@@ -39,7 +39,7 @@ global.logerror = "120363407099549098@g.us"
 global.mods = ['']
 global.prems = []
 // Info
-global.nomorwa = '183455837110471'
+global.nomorwa = '6283821920285'
 global.packname = '© Lumina-Md'
 global.author = 'Hiura'
 global.waktuSholat = {
