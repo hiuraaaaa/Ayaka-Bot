@@ -16,13 +16,13 @@ const require = createRequire(import.meta.url)
 
 const { name, author } = require(join(__dirname, './package.json'))
 
-say('Rijalganzz', {
+say('Hiura', {
   font: 'chrome',
   align: 'center',
   gradient: ['blue', 'green']
 })
 
-say(`by Rijalganzz `, {
+say(`by Hiura `, {
   font: 'console',
   align: 'center',
   gradient: ['blue', 'green']
