@@ -8,17 +8,17 @@ const { generateWAMessageFromContent, proto } = (await import('@adiwajshing/bail
 const defaultMenu = {
   before: `\`Hai Kak👋🏻, %ucpn\`
 
-**INFO BOT**
+*INFO BOT*
 ╭ ⌯ Nama Bot: %me
 │ ⌯ Ping: ${performance.now().toFixed(4)}ms
 ╰ ⌯ Nomor Bot: ${global.botNumber}
 
-**INFO USER**
+*INFO USER*
 ╭ ⌯ Nama: %name
 │ ⌯ Status: %prems
 ╰ ⌯ Limit: %limit Ⓛ
 
-**INFO OWNER**
+*INFO OWNER*
 ╭ ⌯ Owner: ${global.author}
 │ ⌯ Contact: ${global.nomorwa}
 ╰ ⌯ Website: ${global.myweb}
@@ -234,7 +234,7 @@ handler.help = [
   'menuquotes', 'menugc'
 ]
 
-handler.tags = ['castoAyakamenu']
+handler.tags = ['Luminamenu']
 
 handler.command = /^(menuai|menuanime|menuasupan|menuaudio|menudownloader|menugame|menufun|menuhavefun|menuinfo|menuinternet|menumain|menumaker|menuowner|menupanel|menupremium|menupush|menurpg|menusearch|menustiker|menutools|menuislamic|menuceramah|menulistv2|menuquotes|menugc)$/i
 
