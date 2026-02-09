@@ -1,7 +1,7 @@
-# 🌸 Furina MD - WhatsApp Bot
+# ✨ Lumina MD - WhatsApp Bot
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/RIJALGANZZZ/dat1/main/uploads/1ab18d12.jpg" alt="Furina MD Banner" width="500"/>
+  <img src="https://raw.githubusercontent.com/hiuraaaaa/media/main/banner.jpg" alt="Furina MD Banner" width="500"/>
   
   [![GitHub](https://img.shields.io/badge/GitHub-RIJALGANZZZ-blue?style=for-the-badge&logo=github)](https://github.com/RIJALGANZZZ)
   [![WhatsApp](https://img.shields.io/badge/WhatsApp-Owner-green?style=for-the-badge&logo=whatsapp)](https://wa.me/18254873441)
@@ -457,7 +457,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2024 Rijalganzz Owner
+Copyright (c) 2024 Hiura Mihate
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software")...
