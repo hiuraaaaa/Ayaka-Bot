@@ -3,7 +3,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/hiuraaaaa/media/main/banner.jpg" alt="Furina MD Banner" width="500"/>
   
-  [![GitHub](https://img.shields.io/badge/GitHub-RIJALGANZZZ-blue?style=for-the-badge&logo=github)](https://github.com/RIJALGANZZZ)
+  [![GitHub](https://img.shields.io/badge/GitHub-hiuraaaaa-blue?style=for-the-badge&logo=github)](https://github.com/Hiura)
   [![WhatsApp](https://img.shields.io/badge/WhatsApp-Owner-green?style=for-the-badge&logo=whatsapp)](https://wa.me/18254873441)
   [![Website](https://img.shields.io/badge/Website-rijalganzz.web.id-orange?style=for-the-badge&logo=google-chrome)](https://rijalganzz.web.id)
   
